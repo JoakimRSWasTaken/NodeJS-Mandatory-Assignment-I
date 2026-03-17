@@ -1,0 +1,183 @@
+<h1 class="title is-2 is-spaced">REST API Verbs</h1>
+
+<h2 class="title is-4">The Verbs</h2>
+<p>
+    REST APIs use HTTP methods to define actions on resources:
+</p>
+
+<table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Verb</th>
+            <th>Purpose</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td>Read</td>
+            <td>Retrieves data from the server.</td>
+        </tr>
+        <tr>
+            <td><code>POST</code></td>
+            <td>Create</td>
+            <td>Sends data to the server to create new resources.</td>
+        </tr>
+        <tr>
+            <td><code>PUT</code></td>
+            <td>Update (replace resource)</td>
+            <td>Replaces an entire resource.</td>
+        </tr>
+        <tr>
+            <td><code>PATCH</code></td>
+            <td>Update (replace fields)</td>
+            <td>Updates specific fields of a resource.</td>
+        </tr>
+        <tr>
+            <td><code>DELETE</code></td>
+            <td>Delete</td>
+            <td>Removes a resource.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="title is-4">Requests</h2>
+<p>
+    We use the <code>REST</code> verbs like <code>GET</code> and <code>POST</code> with <code>Express</code> to handle
+    different kinds of requests to and from the server.
+</p>
+<p>
+    In the examples I will show some routes based on another project about movies. Note that this is nothing fancy and
+    that all the movie objects are stored locally in an array.
+    The <code>req</code> variable mentioned in the routes is the <code>request</code> sent to the server and the
+    <code>res</code> variable is the response from the server to the client.
+</p>
+
+<h2 class="title is-4">GET Requests</h2>
+<p>
+    <code>GET</code> requests are used to retrieve data from the server. The things we <code>GET</code> from the server
+    are called <code>resources</code>. A function in the <code>app.js</code> or in a <code>Router</code> is called a
+    <code>route</code>.
+</p>
+
+<h3 class="title is-6">GET all</h3>
+<p>A <code>route</code> that returns all <code>resources</code>.</p>
+<pre><code class="language-javascript">app.get('/movies', (req, res) => {
+    res.send({ data: movies });
+});
+</code></pre>
+<p>
+    Here we <code>GET</code> all movies stored by us when accessing the <code>/movies</code> endpoint.
+</p>
+
+<h3 class="title is-6">GET by ID</h3>
+<p>A <code>route</code> that returns a specific <code>resource</code>.</p>
+<pre><code class="language-javascript">app.get('/movies/:id', (req, res) => {
+    const providedMovieId = Number(req.params.id);
+    const foundMovie = movies.find((movie) => movie.id === providedMovieId);
+
+    if (!foundMovie) {
+        res.status(404).send({ errorMessage: `No movie found by id: ${req.params.id}` });
+    } else {
+        res.send({ data: foundMovie });
+    }
+});
+</code></pre>
+<p>
+    This includes error handling. We cast the <code>id</code> from the URL to a <code>Number</code> and use
+    <code>req.params</code>. If no movie is found, a <code>404</code> error is sent.
+</p>
+
+<h3 class="title is-6">GET with Query Parameters</h3>
+<pre><code class="language-javascript">app.get('/bag', (req, res) => {
+    // the query string starts with ? and is followed by key-value pairs:
+    // bag?item1=durum&item2=burger
+    res.send({ data: req.query });
+});
+</code></pre>
+<p>
+    Example query: <code>bag?lunch=durum&dinner=burger</code>
+</p>
+
+<h2 class="title is-4">POST Requests</h2>
+<p><code>POST</code> requests are used to create new data.</p>
+<pre><code class="language-javascript">app.post('/movies', (req, res) => {
+
+    if (!req.body) {  
+        return res.status(400).send({ errorMessage: 'No JSON body provided.' });  
+    }  
+
+    const providedMovie = req.body;  
+    providedMovie.id = nextIdForPostRequest++;  
+    movies.push(providedMovie);  
+    res.send({ data: providedMovie });  
+});
+</code></pre>
+<p>Example <code>req.body</code>:</p>
+<pre><code class="language-json">{
+    "title": "Jagten",
+    "releaseYear": 2012
+}</code></pre>
+
+<h2 class="title is-4">PUT Requests</h2>
+<p><code>PUT</code> requests are used to update an entire resource.</p>
+<pre><code class="language-javascript">app.put('/movies/:id', (req, res) => {
+    const providedMovieId = parseInt(req.params.id);
+    const foundMovieId = movies.findIndex(movie => movie.id === providedMovieId);
+
+    if (foundMovieId === -1) {
+        return res.status(404).json({ message: "Movie not found." });
+    };
+
+    let updatedMovie = {
+        id: providedMovieId,
+        title: req.body.title,
+        releaseYear: req.body.releaseYear
+    };
+
+    movies[foundMovieId] = updatedMovie;
+
+    res.send({ data: updatedMovie });
+});
+</code></pre>
+
+<h2 class="title is-4">PATCH Requests</h2>
+<p><code>PATCH</code> requests update only the provided fields of a resource.</p>
+<pre><code class="language-javascript">app.patch('/movies/:id', (req, res) => {
+    const providedMovieId = Number(req.params.id);
+    const foundMovieIndex = movies.findIndex(movie => movie.id === providedMovieId);
+    if (foundMovieIndex === -1) {
+        return res.status(404).json({ message: "Movie not found." });
+    };
+
+    const foundMovie = movies[foundMovieIndex];
+    const providedMovie = req.body;
+
+    const updatedMovie = {
+        ...foundMovie,
+        ...providedMovie,
+        id: providedMovieId
+    };
+    res.send({ data: updatedMovie });
+});
+</code></pre>
+
+<h2 class="title is-4">DELETE Requests</h2>
+<p><code>DELETE</code> requests remove a resource.</p>
+<pre><code class="language-javascript">app.delete('/movies/:id', (req, res) => {
+    const movieId = parseInt(req.params.id);
+    const moviesArrayIndexToDelete = movieId - 1;
+
+    if (moviesArrayIndexToDelete === -1) {
+        return res.status(404).json({ message: "Movie not found." });
+    };
+
+    movies.splice(moviesArrayIndexToDelete, 1);
+    res.status(204).send();
+});
+</code></pre>
+<p>
+    Movies are stored in an array, so deletion uses <code>splice</code>. The variable
+    <code>moviesArrayIndexToDelete</code> accounts for array indexing starting at 0.
+</p>

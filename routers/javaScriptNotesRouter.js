@@ -2,34 +2,35 @@ import { Router } from 'express';
 
 const router = Router();
 
-import { variablesPage, dataTypesPage, typeCoercionPage, functionsPage, loopMethodsAndSideEffectsPage, datePage, fetchpagePage
+import {
+    variablesPage, dataTypesPage, typeCoercionPage, functionsPage, loopMethodsAndSideEffectsPage, datePage, fetchpagePage
 } from "../util/pagesUtil.js";
 
-router.get('/javascript/variables', (req, res) => {
+router.get('/javascript-notes/variables', (req, res) => {
     res.send(variablesPage);
 });
 
-router.get('/javascript/data-types', (req, res) => {
+router.get('/javascript-notes/data-types', (req, res) => {
     res.send(dataTypesPage);
 });
 
-router.get('/javascript/type-coercion', (req, res) => {
+router.get('/javascript-notes/type-coercion', (req, res) => {
     res.send(typeCoercionPage);
 });
 
-router.get('/javascript/functions', (req, res) => {
+router.get('/javascript-notes/functions', (req, res) => {
     res.send(functionsPage);
 });
 
-router.get('/javascript/loop-methods-and-side-effects', (req, res) => {
+router.get('/javascript-notes/loop-methods-and-side-effects', (req, res) => {
     res.send(loopMethodsAndSideEffectsPage);
 });
 
-router.get('/javascript/date', (req, res) => {
+router.get('/javascript-notes/date', (req, res) => {
     res.send(datePage);
 });
 
-router.get('/javascript/fetch', (req, res) => {
+router.get('/javascript-notes/fetch', (req, res) => {
     res.send(fetchpagePage);
 });
 

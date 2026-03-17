@@ -1,0 +1,44 @@
+<h1 class="title is-2 is-spaced">Import and Export in Node.js</h1>
+
+<h2 class="title is-4">CommonJS vs. ES Modules - What are these?</h2>
+<p>
+    <code>CommonJS</code> and <code>ES Modules</code> are two module systems supported by <code>Node.js</code>.
+</p>
+
+<h3 class="title is-6">CommonJS</h3>
+<p>
+    <code>CommonJS</code> is older and is the default in <code>Node.js</code>. It imports with <code>require()</code>
+    and exports with <code>module.exports</code>.
+</p>
+<pre><code class="language-javascript">const cookie = require('./cookie.json');
+  
+function getCookie() {
+    return cookie;
+}
+module.exports = getCookie;
+</code></pre>
+
+<h3 class="title is-6">ES Modules</h3>
+<p>
+    <code>ES Modules</code> are a more modern <code>JavaScript</code> module system. It uses the keywords
+    <code>import</code> and <code>export</code>.
+    It supports named imports and default imports. <code>ES Modules</code> also requires <code>.js</code> in imports,
+    but it is recommended to always include it for consistency and readability.
+</p>
+<pre><code class="language-javascript">import express from 'express';
+import { getNewCookieBatch } from './cookieFactory.js';
+
+export default function getNewCookieBatch() {
+    return ['cookie1', 'cookie2'];
+}
+</code></pre>
+<p>
+    Here we import a default export, <code>express</code>, and a named export, <code>getNewCookieBatch</code>.
+</p>
+
+<h3 class="title is-6">Main take-aways</h3>
+<p>
+    You cannot mix <code>require()</code> and <code>import</code> in the same file. <code>__dirname</code> is not
+    available in <code>ES Modules</code>, which is why we use the <code>static</code> library from
+    <code>Express.js</code>.
+</p>

@@ -21,8 +21,13 @@ import javaScriptNotesRouter from "./routers/javaScriptNotesRouter.js";
 
 app.use(javaScriptNotesRouter);
 
-// ==================== API ======================
+import nodeAndExpressNotesRouter from "./routers/nodeAndExpressNotesRouter.js"
 
+app.use(nodeAndExpressNotesRouter);
+
+import restApiNotesRouter from "./routers/restApiNotesRouter.js"
+
+app.use(restApiNotesRouter);
 
 
 const PORT = process.env.PORT || 8080;

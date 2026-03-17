@@ -1,0 +1,37 @@
+<h1 class="title is-2 is-spaced">REST</h1>
+
+<h2 class="title is-4">What is REST?</h2>
+<p>
+    <code>REST</code>, or <code>Representational State Transfer</code>, is a way of designing web APIs.
+    It uses the <code>resources</code> it handles in the URL, uses standard <code>HTTP methods</code> to perform actions
+    on or with the <code>resources</code>,
+    and usually exchanges data between server and client in <code>JSON</code> format.
+</p>
+
+<h2 class="title is-4">REST Conventions</h2>
+
+<h3 class="title is-6">Resource based URLs</h3>
+<p>
+    We want our <code>resources</code> to be represented in our URLs. They should be plural, and when referring to a
+    specific <code>resource</code>, we indicate it with an <code>id</code>.
+</p>
+<p>
+    Example endpoints:
+</p>
+<ul>
+    <li><code>https://my-movie-theater/movies</code> — shows all movies.</li>
+    <li><code>https://my-movie-theater/movies/32</code> — shows the movie with <code>id</code> 32.</li>
+</ul>
+
+<h3 class="title is-6">Status Codes</h3>
+<p>
+    HTTP <code>Status Codes</code> represent the outcome of the action performed. The main ones we use are:
+</p>
+<ul>
+    <li><code>2xx</code> — success (e.g., <code>200 OK</code>, <code>201 Created</code> when creating a resource,
+        <code>204 No Content</code> when deleting a resource).</li>
+    <li><code>3xx</code> — redirection.</li>
+    <li><code>4xx</code> — client error (e.g., <code>400 Bad Request</code> for invalid or empty JSON payloads,
+        <code>404 Not Found</code> when accessing a non-existent endpoint).</li>
+    <li><code>5xx</code> — server error.</li>
+</ul>

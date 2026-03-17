@@ -1,0 +1,64 @@
+<h1 class="title is-2 is-spaced">Node.js, npm and nodemon</h1>
+
+<h2 class="title is-4">What is Node.js?</h2>
+<p>
+    To explain why Node.js is cool we have to mention how vanilla JavaScript works. JavaScript is typically run in the
+    browser.
+    Node.js is a JavaScript runtime environment that lets you run JavaScript on the server side. This allows us to
+    interact with the server itself and with data storage using JavaScript.
+    This feature allows us to do many cool and awesome things, including but not limited to server-side rendering of
+    webpages.
+</p>
+
+<h2 class="title is-4">Node Modules</h2>
+<p>
+    <code>Node Modules</code> are JavaScript libraries of code that can be installed with <code>npm</code> and imported
+    into your project.
+    <code>Node Modules</code> are stored in a folder called <code>node_modules</code> in your project.
+</p>
+
+<h2 class="title is-4">What is Node Package Manager?</h2>
+<p>
+    Node Package Manager, or <code>npm</code> for short, is a package manager for Node.js. It makes sense. It allows you
+    to install and manage dependencies for your Node.js project.
+    Using <code>npm</code> is pretty easy and we will need it for what we want to do.
+</p>
+
+<h3 class="title is-6">npm install</h3>
+<p>
+    <code>npm install</code> is the command you want to use when installing a new package. An example would be to use it
+    to install Express, which we will talk about in another section.
+</p>
+<pre><code class="language-bash">$ npm install express</code></pre>
+<p>
+    The <code>$</code> signifies that this is a command typed into your terminal shell. You would want to install
+    Express in the root folder of your project.
+</p>
+
+<h2 class="title is-4">What is nodemon?</h2>
+<p>
+    <code>nodemon</code> is a package you can install with <code>npm</code> just like Express is. <code>nodemon</code>
+    lets you automatically restart your application whenever it detects changes in your files. This is amazing for
+    development purposes as it saves you the trouble of manually stopping and restarting your application.
+</p>
+<p>
+    To run your application with <code>nodemon</code> you want to combine the command with the JavaScript file you want
+    to run:
+</p>
+<pre><code class="language-bash">$ nodemon app.js</code></pre>
+
+<h3 class="title is-6">nodemon.json</h3>
+<p>
+    <code>nodemon.json</code> is a file that lets you configure how <code>nodemon</code> works for your project. The
+    main thing I will point out for this is that <code>nodemon</code> by default will listen on the file types
+    <code>.js</code>, <code>.mjs</code>, <code>.cjs</code> and <code>.json</code>. Since we will be working with
+    <code>.html</code> and <code>.css</code> as well, we would like to add those to the list. To do this we would create
+    the <code>nodemon.json</code> file in our project root folder and add the following into it:
+</p>
+<pre><code class="language-json">{
+    "ext": "js, json, html, css"
+}</code></pre>
+<p>
+    This overwrites the list of file types that your <code>nodemon</code> listens in on, so add all file types you would
+    need.
+</p>

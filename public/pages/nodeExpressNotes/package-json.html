@@ -1,0 +1,96 @@
+<h1 class="title is-2 is-spaced">package.json</h1>
+
+<h2 class="title is-4">What is the package.json file?</h2>
+<p>
+    <code>package.json</code> is the file that contains the metadata about your project. If you have worked with
+    <code>Maven</code> as a build tool before, you might be familiar with the <code>pom.xml</code> which fulfills the
+    same purpose.
+</p>
+
+<pre><code>Maven               NPM
+
+=================================================
+
+pom.xml             package.json
+
+meta                meta
+
+dependencies        dependencies
+
+lifecycles          scripts
+</code></pre>
+
+<p>
+    A lot of the values to be set in <code>package.json</code> have default values, meaning you don't have to fill them
+    out if you do not want to. Here is an example of a well-defined <code>package.json</code>:
+</p>
+
+<pre><code class="language-json">{
+  "name": "example_project",
+  "version": "0.0.1",
+  "description": "An example of a package.json",
+  "keywords": [
+    "example",
+    "package.json"
+  ],
+  "license": "ISC",
+  "author": "JRSWT",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start-dev": "cross-env PORT=8080 NODE_ENV=DEV node app.js",
+    "start-prod": "cross-env PORT=80 node app.js"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "express": "^5.2.1"
+  }
+}
+</code></pre>
+
+<p>
+    And here is an example of a still completely viable <code>package.json</code>:
+</p>
+
+<pre><code class="language-json">{
+    "dependencies": {
+        "express": "^5.2.1"
+    }
+}
+</code></pre>
+
+<p>
+    However, if you plan on releasing your project as a package, it is recommended to fill it out to look more like the
+    first example.
+</p>
+
+<h3 class="title is-6">dependencies</h3>
+<p>
+    Dependencies is a list of libraries, or modules, that your project is using. They will be listed with their name and
+    a version, e.g.
+</p>
+
+<pre><code class="language-json">{
+    "dependencies": {
+        "express": "^5.2.1"
+    }
+}
+</code></pre>
+
+<p>
+    The <code>^</code> used in the version tells <code>npm</code> to install the latest version that is greater than or
+    equal to the given version.
+</p>
+
+<h3 class="title is-6">scripts</h3>
+<p>
+    <code>Scripts</code> are terminal commands that can be executed with the <code>npm run</code> command. Remember the
+    fleshed-out <code>package.json</code> from earlier? It had a script called <code>start-dev</code> and that
+    <code>script</code> can be run like this:
+</p>
+
+<pre><code class="language-bash">npm run start-dev</code></pre>
+
+<p>
+    This is handy for defining specific ways to run your app or similar tasks.
+</p>

@@ -7,3 +7,22 @@ body {
 main {
     flex: 1;
 }
+
+nav {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+footer {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#logo {
+    width: 55px;
+    min-width: 5%;
+    height: auto;
+}

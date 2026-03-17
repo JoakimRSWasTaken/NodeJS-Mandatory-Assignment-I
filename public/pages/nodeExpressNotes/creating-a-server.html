@@ -1,0 +1,62 @@
+<h1 class="title is-2 is-spaced">Creating a Server with Express.js</h1>
+
+<h2 class="title is-4">What is Express.js?</h2>
+<p>
+    <code>Express.js</code> is a web application framework for <code>Node.js</code> that is lightweight, modular, and
+    unopinionated (to a certain degree).
+</p>
+<p>
+    You can read more about <a href="https://expressjs.com/" target="_blank">Express.js</a> on their website if you are
+    interested.
+</p>
+
+<h2 class="title is-4">The three things to remember</h2>
+<p>
+    To use Express to get a server up and running, there are three main things you want to do. You want to do all these
+    things in your <code>app.js</code>.
+    Once you have these three things down you are good to go, and the rest will follow!
+</p>
+
+<h3 class="title is-6">1. Import</h3>
+<p>
+    You want to import Express to access the libraries it contains. There are two main ways to do this; one is shown
+    here, but note that there are two methods.
+</p>
+<pre><code class="language-javascript">const express = require('express');</code></pre>
+<p>
+    You import Express as a variable with the <code>require</code> keyword.
+</p>
+
+<h3 class="title is-6">2. Instantiate</h3>
+<p>
+    You also want to instantiate Express, which can be done like this:
+</p>
+<pre><code class="language-javascript">const app = express();</code></pre>
+<p>
+    Now you have instantiated Express.
+</p>
+
+<h3 class="title is-6">3. Listen</h3>
+<p>
+    Last, but not least, you have to make it listen on a port. An obvious choice for a port is <code>8080</code> since
+    it is a standard choice for development purposes.
+</p>
+<pre><code class="language-javascript">app.listen(8080);</code></pre>
+<p>
+    You want this to be at the bottom of your <code>app.js</code>. A lot of other developers expect it to be there, so
+    it is more of an unwritten rule than a strict convention.
+</p>
+<p>
+    If you want to fancy up your <code>app.listen()</code>, you can do something like this:
+</p>
+<pre><code class="language-javascript">const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => {
+    console.log('Server is listening on port', PORT);
+});
+</code></pre>
+<p>
+    Here we define a variable called <code>PORT</code> and set it to be whatever we define it to be <em>or</em>
+    <code>8080</code>. Then we pass the <code>PORT</code> variable as an argument into the <code>listen()</code>
+    function along with a <code>callback function</code> that logs a message to the console.
+</p>

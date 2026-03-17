@@ -1,0 +1,29 @@
+<h1 class="title is-2 is-spaced">CSR vs. SSR</h1>
+
+<h2 class="title is-4">What do these letters mean?</h2>
+<p>
+    I understand your confusion. You are not alone.
+</p>
+
+<h3 class="title is-6">CSR</h3>
+<p>
+    <code>CSR</code>, or <code>Client-side Rendering</code>, is a way to render your website.
+    More accurately, it allows the client to render the content. <code>HTML</code> files are rather empty when using
+    <code>CSR</code> and get filled out by <code>JavaScript</code> as the page loads.
+</p>
+<p>
+    This can be good for dynamic pages but may feel slow on less powerful devices.
+    Historically, it was poor for <code>SEO</code> (<em>Search Engine Optimization</em>), since web scrapers used to
+    only scan HTML content. Empty HTML would lead to missing content for your page.
+    Modern web scrapers now execute JavaScript, so this is less of an issue, but it’s worth keeping in mind.
+</p>
+
+<h3 class="title is-6">SSR</h3>
+<p>
+    <code>SSR</code>, or <code>Server-side Rendering</code>, is another way to render your website. Here, the server
+    renders the HTML fully before sending it to the client.
+</p>
+<p>
+    This is beneficial for <code>SEO</code>, as the full HTML content is immediately available for web scrapers. It also
+    reduces client workload by offloading rendering to the server.
+</p>

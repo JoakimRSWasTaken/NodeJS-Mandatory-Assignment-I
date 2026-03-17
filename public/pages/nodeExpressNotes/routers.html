@@ -1,0 +1,65 @@
+<h1 class="title is-2 is-spaced">Routers</h1>
+
+<h2 class="title is-4">What are Routers?</h2>
+<p>
+    <code>Routers</code> are a way to collect a bunch of <code>routes</code>. And what are <code>routes</code>?
+    Here is an example of a <code>route</code>:
+</p>
+<pre><code class="language-javascript">get('/hello', (req, res) => {
+    res.send({ data: "Hello!" });
+});
+</code></pre>
+<p>
+    These <code>routes</code> take two arguments: an endpoint as a string (<code>/hello</code> in this example)
+    and a callback function with <code>req</code> and <code>res</code> defining what to do with the <code>request</code>
+    and <code>response</code>.
+</p>
+
+<p>
+    What would your <code>app.js</code> look like if you had 10-20 of these routes? Messy! Correct!
+    That is why we use <code>Routers</code>. We divide the <code>routes</code> into separate files to keep things
+    organized,
+    then import them into <code>app.js</code>.
+</p>
+
+<h3 class="title is-6">Example Router</h3>
+<pre><code class="language-javascript">import { Router } from 'express';
+
+const router = Router();
+
+import { frontpagePage, aboutPage, contactPage } from "../util/pagesUtil.js";
+
+router.get('/', (req, res) => {
+    res.send(frontpagePage);
+});
+
+router.get('/about', (req, res) => {
+    res.send(aboutPage);
+});
+
+router.get('/contact', (req, res) => {
+    res.send(contactPage);
+});
+
+export default router;
+</code></pre>
+<p>
+    Note how we import the named export <code>Router</code> from <code>express</code> and instantiate it.
+    At the end of the file we export it, and then we import it into <code>app.js</code>:
+</p>
+<pre><code class="language-javascript">import express from 'express';
+
+const app = express();
+
+app.use(express.static('public'));
+
+import exampleRouter from "./routers/exampleRouter.js";
+
+app.use(exampleRouter);
+
+const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => {
+    console.log('Server is listening on port', PORT);
+});
+</code></pre>

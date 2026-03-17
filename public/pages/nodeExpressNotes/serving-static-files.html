@@ -1,0 +1,62 @@
+<h1 class="title is-2 is-spaced">Static Files</h1>
+
+<h2 class="title is-4">What are Static Files?</h2>
+<p>
+    <code>Static files</code> are the files we serve to the client. This includes <code>html</code>, <code>css</code>,
+    <code>js</code>, <code>images</code>, or similar.
+    We keep the <code>static files</code> in a folder called <code>public</code> in the <code>root folder</code>:
+</p>
+<pre><code>Example_Project/
+├── node_modules/
+├── public/
+│   ├── assets/
+│   │   ├── css/
+│   │   ├── images/
+│   │   └── js/
+│   ├── components/
+│   │   ├── footer/
+│   │   └── header/
+│   └── pages/
+│       ├── about/
+│       ├── contact/
+│       └── frontend/
+├── routers/
+│   ├── pagesRouter.js
+│   └── somethingElseRouter.js
+├── util/
+│   ├── pagesUtil.js
+│   ├── navigationUtil.js
+│   └── templatingEngine.js
+├── app.js
+├── nodemon.json
+├── package-lock.json
+└── package.json
+</code></pre>
+
+<h3 class="title is-6">What to do first?</h3>
+<p>
+    We want to tell <code>Express</code> to serve all files in the <code>public</code> folder as
+    <code>static files</code>. We do this with the following line of code:
+</p>
+<pre><code class="language-javascript">app.use(express.static('public'));</code></pre>
+
+<h3 class="title is-6">What to do next?</h3>
+<p>
+    We send the <code>static files</code> with <code>res.sendFile()</code> as mentioned in the section about
+    <code>XSS</code>.
+</p>
+<pre><code class="language-javascript">app.get('/', (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
+</code></pre>
+<p>
+    We use <code>__dirname</code> to get an absolute path to the file.
+</p>
+<p>
+    We can also use <code>path.resolve()</code>, which we will need when discussing <code>ES Modules</code>, from Node's
+    own <code>path</code> module to resolve our paths.
+</p>
+<pre><code class="language-javascript">app.get('/', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'));
+});
+</code></pre>

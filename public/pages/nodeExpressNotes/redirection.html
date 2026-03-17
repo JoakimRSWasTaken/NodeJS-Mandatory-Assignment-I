@@ -1,0 +1,51 @@
+<h1 class="title is-2 is-spaced">Redirection</h1>
+
+<h2 class="title is-4">What is meant by redirection?</h2>
+<p>
+    <code>Redirection</code> means being directed to another place on the web. There are several ways to achieve this.
+</p>
+
+<h2 class="title is-4">The anchor tag in HTML</h2>
+<p>
+    The <code>anchor</code> tag is commonly used for redirecting to another URL. This can be another endpoint or an
+    entirely different website.
+</p>
+<pre><code class="language-html">&lt;a href="https://www.google.com/"&gt;Take me awaaaaay&lt;/a&gt;</code></pre>
+<p>
+    This is a simple and effective method, but there are also more dynamic ways to handle redirection using
+    <code>JavaScript</code>.
+</p>
+
+<h2 class="title is-4">The global variable 'window'</h2>
+<p>
+    <code>window</code> is the global object representing the browser window in which your script is running.
+    Since everything runs within this context, everything becomes a property of the <code>window</code> object.
+</p>
+<p>
+    This means that:
+</p>
+<pre><code class="language-javascript">const currentLocation = window.location.href;</code></pre>
+<p>
+    is the same as:
+</p>
+<pre><code class="language-javascript">const currentLocation = location.href;</code></pre>
+
+<h2 class="title is-4">location.href</h2>
+<p>
+    Setting <code>location.href</code> to a new value navigates the <code>window</code> to that page.
+</p>
+<pre><code class="language-javascript">location.href = 'https://www.google.com/';</code></pre>
+<p>
+    This will redirect the user to <code>google.com</code> and add the current page to the browser history, allowing the
+    user to navigate back using the back button.
+</p>
+
+<h2 class="title is-4">location.replace</h2>
+<p>
+    Using <code>location.replace()</code> also redirects to a new page.
+</p>
+<pre><code class="language-javascript">location.replace('https://www.google.com/');</code></pre>
+<p>
+    However, this method does not add the current page to the browser history, meaning the back button will not return
+    the user to the previous page.
+</p>

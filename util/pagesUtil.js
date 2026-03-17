@@ -78,11 +78,81 @@ export const fetchpagePage = constructPage(fetchpage, {
 
 // ===============  Express Notes  ================
 
+const creatingAServerWithExpress = readPage('./public/pages/nodeExpressNotes/creating-a-server.html');
+export const creatingAServerWithExpressPage = constructPage(creatingAServerWithExpress, {
+    documentTitle: "Node.js for Dummies | Creating a Server with Express",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
 
+const csrSsr = readPage('./public/pages/nodeExpressNotes/csr-ssr.html');
+export const csrSsrPage = constructPage(csrSsr, {
+    documentTitle: "Node.js for Dummies | CSR vs. SSR",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
 
-// ===============  Import/Export Notes  ================
+const importExport = readPage('./public/pages/nodeExpressNotes/import-export.html');
+export const importExportPage = constructPage(importExport, {
+    documentTitle: "Node.js for Dummies | Import & Export",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
 
+const nodeNpmAndNodemon = readPage('./public/pages/nodeExpressNotes/node-npm-nodemon.html');
+export const nodeNpmAndNodemonPage = constructPage(nodeNpmAndNodemon, {
+    documentTitle: "Node.js for Dummies | Node.js, npm & nodemon",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
 
+const packageJson = readPage('./public/pages/nodeExpressNotes/package-json.html');
+export const packageJsonPage = constructPage(packageJson, {
+    documentTitle: "Node.js for Dummies | package.json",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
+
+const redirection = readPage('./public/pages/nodeExpressNotes/redirection.html');
+export const redirectionPage = constructPage(redirection, {
+    documentTitle: "Node.js for Dummies | Redirection",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
+
+const routers = readPage('./public/pages/nodeExpressNotes/routers.html');
+export const routersPage = constructPage(routers, {
+    documentTitle: "Node.js for Dummies | Routers",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
+
+const servingStaticFilesWithExpress = readPage('./public/pages/nodeExpressNotes/serving-static-files.html');
+export const servingStaticFilesWithExpressPage = constructPage(servingStaticFilesWithExpress, {
+    documentTitle: "Node.js for Dummies | Serving Static Files with Express",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
+
+const xss = readPage('./public/pages/nodeExpressNotes/xss.html');
+export const xssPage = constructPage(xss, {
+    documentTitle: "Node.js for Dummies | XSS and how to avoid it",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
 
 // ===============  REST API Notes  ================
 
+const restConventions = readPage('./public/pages/restApiNotes/rest-api-conventions.html');
+export const restConventionsPage = constructPage(restConventions, {
+    documentTitle: "REST API for Dummies | REST Conventions",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});
+
+const restApiVerbs = readPage('./public/pages/restApiNotes/rest-api-verbs.html');
+export const restApiVerbsPage = constructPage(restApiVerbs, {
+    documentTitle: "REST API for Dummies | REST API Verbs",
+    cssLink: defaultCssLinks,
+    scriptLink: defaultScriptLinks
+});

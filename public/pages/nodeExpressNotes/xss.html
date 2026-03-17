@@ -1,0 +1,41 @@
+<h1 class="title is-2 is-spaced">XSS</h1>
+
+<h2 class="title is-4">What is XSS?</h2>
+<p>
+    <code>XSS</code>, or <code>Cross-Site Scripting</code>, is a way for a hacker to inject malicious
+    <code>JavaScript</code> into your website.
+    This usually happens when a user's input is not handled, or <code>sanitized</code>, thoroughly before being run in
+    the browser.
+    An example could be the user submitting the text:
+</p>
+<pre><code class="language-html">&lt;script&gt;alert("Hacked!")&lt;/script&gt;</code></pre>
+<p>
+    This script would then be executed in the browser if the text was not validated beforehand.
+</p>
+<p>
+    Try googling the case of car license plates containing the text 'DROP TABLE'-something. It is a very serious
+    security issue but also extremely funny to me.
+</p>
+
+<h2 class="title is-4">How to avoid XSS</h2>
+
+<h3 class="title is-6">Escape or Sanitize</h3>
+<p>
+    You can convert special characters into other, safer characters before rendering.
+</p>
+<pre><code class="language-javascript">const safeInput = req.body.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");</code></pre>
+<p>
+    This turns the contents of <code>req.body.name</code> into a safe string by replacing <code>&lt;</code> with
+    <code>&amp;lt;</code> and <code>&gt;</code> with <code>&amp;gt;</code>, turning the earlier example into harmless
+    text.
+</p>
+
+<h3 class="title is-6">Use safe methods for what you want to do</h3>
+<p>
+    You can use <code>res.send()</code> for <code>JSON</code> and <code>res.sendFile()</code> for static files.
+</p>
+
+<h3 class="title is-6">Use Libraries to do all this for you</h3>
+<p>
+    Packages like <code>xss</code> and <code>sanitize-html</code> exist for this purpose to make your life easier.
+</p>
