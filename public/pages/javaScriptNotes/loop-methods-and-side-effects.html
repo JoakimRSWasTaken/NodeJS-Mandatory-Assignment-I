@@ -1,0 +1,95 @@
+<h1 class="title is-2 is-spaced">Loop Methods & Side Effects</h1>
+<h2 class="title is-4">Loop methods</h2>
+
+<p>
+    There are several methods available for looping through collections of data.
+    Examples of those are:
+</p>
+
+<ul>
+    <li><code>.map</code></li>
+    <li><code>.forEach</code></li>
+    <li><code>.filter</code></li>
+    <li><code>.reduce</code></li>
+    <li><code>.sort</code></li>
+    <li><code>.find</code></li>
+    <li><code>.indexOf</code></li>
+</ul>
+
+<p>
+    I could explain all of them but I will just explain a few and tell you to look
+    them up when you need a method to loop through your data.
+    The most important thing you should take from this is that if you can use
+    a loop method, then you should.
+</p>
+
+<h3 class="title is-6">.map</h3>
+
+<p>
+    <code>.map</code> is used when you want to perform an operation on the elements
+    of an array and make a new array of the changed values.
+</p>
+
+<pre><code class="language-javascript">
+const numbers = [1, 2, 3, 4, 5];
+
+const doubledNumbers = numbers.map((number) => {
+  return number * 2;
+});
+</code></pre>
+
+<p>
+    Here we double the numbers in the array and save them in a new array.
+</p>
+
+<h3 class="title is-6">.indexOf</h3>
+
+<p>
+    <code>.indexOf</code> finds the index of the first occurrence of the value
+    passed as the parameter.
+</p>
+
+<pre><code class="language-javascript">
+const significantNumbers = [0, 2.718, 3.141592, 1729];
+
+const indexOfPi = significantNumbers.indexOf(3.141592);
+</code></pre>
+
+<p>
+    Note that this only finds the first occurrence, meaning that if we had several
+    instances of pi in the array, we would still just get the index 2 here.
+</p>
+
+<h2 class="subtitle is-4">Side effects</h2>
+
+<p>
+    Side effects in programming are an observable effect besides from reading
+    the input of a function and producing an output, for example changing a variable.
+</p>
+
+<pre><code class="language-javascript">
+const balloonAnimals = [
+  { type: "Koala", difficulty: 5.0 },
+  { type: "Dog", difficulty: 2.5 },
+  { type: "Giraffe", difficulty: 1.5, isTall: true }
+];
+
+const updatedDifficultyBalloonAnimals = balloonAnimals.map((balloonAnimal) => {
+  if (balloonAnimal.type !== "Koala") {
+    balloonAnimal.difficulty = 3.0;
+  }
+  return balloonAnimal;
+});
+</code></pre>
+
+<p>
+    If we printed the original variable <code>balloonAnimals</code>, it would also
+    have its difficulties for the individual objects adjusted since the objects
+    referenced in the array have had their attributes changed.
+</p>
+
+<p>
+    The <code>.map</code> method creates a new array with the operation passed to
+    it as a parameter, but since the operation here was done on objects used
+    elsewhere, this side effect is visible in the existing array.
+</p>

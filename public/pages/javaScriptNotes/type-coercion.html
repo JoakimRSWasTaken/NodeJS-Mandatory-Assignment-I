@@ -1,0 +1,50 @@
+<h1 class="title is-2 is-spaced">Type Coercion</h1>
+<h2 class="title is-4">What is type coercion?</h2>
+
+<p>
+    Type coercion is the process of converting a value into a data type that it was not originally.
+    Type coercion happens automatically and is usually done when performing operations that require
+    specific data types.
+</p>
+
+<h3 class="title is-4">Examples of type coercion</h3>
+
+<p>
+    A very simple example can be the line
+</p>
+
+<div class="box">
+    <pre><code class="language-javascript">
+console.log(1 + '2');
+      </code></pre>
+</div>
+
+<p>
+    where the engine running the JavaScript coerces the string <code>'2'</code> into the number <code>2</code>.
+</p>
+
+<p>
+    Type coercion can also happen when using comparison operators:
+</p>
+
+<div class="box">
+    <pre><code class="language-javascript">
+console.log(null !== 0);
+      </code></pre>
+</div>
+
+<p>
+    To be able to use the comparison operator <code>!==</code> (or the inverse <code>===</code>),
+    we need the two arguments to be the same data type. In this example they are both converted
+    to simple boolean expressions.
+</p>
+
+<p>
+    The expression printed from this line of code is:
+</p>
+
+<div class="box">
+    <pre><code class="language-javascript">
+false
+      </code></pre>
+</div>

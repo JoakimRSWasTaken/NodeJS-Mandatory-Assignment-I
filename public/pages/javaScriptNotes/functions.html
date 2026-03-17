@@ -1,0 +1,75 @@
+<h1 class="title is-2 is-spaced">Functions</h1>
+<h2 class="title is-4">What are functions?</h2>
+
+<p>
+    Functions are a way to modularize your code by splitting it up into reusable parts.
+    These reusable parts are called functions in JavaScript.
+</p>
+
+<h3 class="title is-6">First Class Citizen</h3>
+
+<p>
+    Functions are first class citizens in JavaScript. This means that they have the same
+    status as the other data types. Functions can be passed as arguments to other
+    functions and be returned from functions, just like any other data type.
+</p>
+
+<h3 class="title is-6">Regular functions</h3>
+
+<p>
+    You define regular functions with the <code>function</code> keyword:
+</p>
+
+<pre><code class="language-javascript">function sayHello(name) {
+  console.log('Hello ' + name);
+}
+    </code></pre>
+
+<p>
+    They can be called again from anywhere in the same scope due to the fact that
+    they are being hoisted to the top of the call stack.
+</p>
+
+<h3 class="title is-6">Anonymous functions</h3>
+
+<p>
+    Anonymous functions are functions without a defined name and are often used
+    as callback functions.
+</p>
+
+<pre><code class="language-javascript">const sayHello = function(name) {
+  console.log('Hello ' + name);
+};
+    </code></pre>
+
+<p>
+    They are not used that much anymore and instead we often use the next type of function.
+</p>
+
+<h3 class="title is-6">Arrow functions</h3>
+
+<p>
+    Arrow functions are an easy way to write functions directly where they are supposed
+    to be used. These are also commonly used as callback functions.
+</p>
+
+<pre><code class="language-javascript">const sayHello = (name) => {
+  console.log('Hello ' + name);
+};
+    </code></pre>
+
+<p>
+    They will be widely used.
+</p>
+
+<h3 class="title is-6">Callback functions</h3>
+
+<p>
+    Callback functions are functions that are passed to another function as an argument.
+    This happens quite often and the example below is something you will see frequently.
+</p>
+
+<pre><code class="language-javascript">app.get('/', (req, res) => {
+  res.sendFile('frontpage.html');
+});
+    </code></pre>

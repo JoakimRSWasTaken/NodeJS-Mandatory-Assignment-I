@@ -1,0 +1,60 @@
+<h1 class="title is-2 is-spaced">Variables</h1>
+<h2 class="title is-4">What are variables?</h2>
+
+<p>
+    Variables are an invaluable tool that lets you store data in different forms and use it again later in your
+    code.
+    They help increase readability and reduce duplicated code fragments, keeping your code DRY (Don't Repeat
+    Yourself).
+</p>
+
+<h2 class="title is-4">Defining variables in JavaScript</h2>
+
+<p>
+    We have more than one choice when choosing which keyword to use when assigning a variable. We have:
+</p>
+
+<ul>
+    <li><code>var</code></li>
+    <li><code>const</code></li>
+    <li><code>let</code></li>
+</ul>
+
+<h3 class="title is-6">var</h3>
+
+<p>
+    Var is the oldschool keyword for defining variables.
+</p>
+
+<pre><code class="language-javascript">var petDog = "Faxi";</code></pre>
+
+<p>
+    There are some issues with var. Variables assigned with var will have their values kept through the
+    scope they
+    are defined in, "bleeding through" the scope.
+</p>
+
+<h3 class="title is-6">const</h3>
+
+<p>
+    Const is a more recent addition. It lets you assign a value to your variable and does not let
+    you overwrite this
+    value afterwards. It is recommended to default to const unless you know you want to change the
+    value later.
+</p>
+
+<pre><code class="language-javascript">const otherPetDog = "Rökkvi";</code></pre>
+
+<h3 class="title is-6">let</h3>
+
+<p>
+    Let is also a newer addition. It lets you assign a value while allowing you to change it
+    later.
+</p>
+
+<pre><code class="language-javascript">let petCat = "Sammy";
+
+(...possibly several lines of code...)
+
+petCat = "Humla";
+</code></pre>

@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-
     $CSS_LINKS$
+
+    <link rel="icon" type="image/png" href="/assets/images/dunce-hat.png">
 
     <title>$DOCUMENT_TITLE$</title>
 </head>
@@ -18,65 +16,88 @@
 
     <nav>
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <!-- Insert favicon/logo here -->
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">JavaScript for Dummies</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">Variables</a>
-                        <a class="navbar-item">Data Types</a>
-                        <a class="navbar-item">Type Coercion</a>
-                        <a class="navbar-item">Functions</a>
-                        <a class="navbar-item">Callback Functions</a>
-                        <a class="navbar-item">Loop Methods & Side Effects</a>
-                        <a class="navbar-item">Time & Date</a>
-                        <a class="navbar-item">Fetch</a>
-                    </div>
-                </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Import/Export for Dummies</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">Import & Export in HTML</a>
-                        <a class="navbar-item">Import & Export in Node.js</a>
-                        <a class="navbar-item">CommonJS vs. ESmodules</a>
-                    </div>
-                </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Express for Dummies</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">Node.js, npm & nodemon</a>
-                        <a class="navbar-item">Node Modules</a>
-                        <a class="navbar-item">Express</a>
-                        <a class="navbar-item">package.json</a>
-                        <a class="navbar-item">Creating a Server with Express</a>
-                        <a class="navbar-item">GET Requests in Express</a>
-                        <a class="navbar-item">POST Requests in Express</a>
-                        <a class="navbar-item">XSS & how to avoid it</a>
-                        <a class="navbar-item">Serving Static Files in Express</a>
-                        <a class="navbar-item">Redirection</a>
-                    </div>
-                </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">REST API for Dummies</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item is-selected">REST API Verbs</a>
-                        <a class="navbar-item">REST Conventions</a>
-                        <a class="navbar-item">REST API Tables</a>
-                        <a class="navbar-item">Anatomy of an URL</a>
-                    </div>
-                </div>
-
-                <a class="navbar-item" href="/about">About</a>
-
-                <a class="navbar-item" href="/contact">Contact</a>
+            <div>
+                <a href="/"><img class="icon" id="logo" src="../assets/images/dunce-hat.png"
+                        alt="Dunce Hat as logo"></a>
             </div>
+        </div>
+
+        <div class="level is-mobile">
+            <div class="level-item dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu1">
+                        <span>JavaScript for
+                            Dummies</span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu1">
+                    <div class="dropdown-content">
+                        <button class="dropdown-item" id="variables-navigation" href="/javascript/variables">Variables</button>
+                        <button class="dropdown-item" id="data-types-navigation">Data Types</button>
+                        <button class="dropdown-item" id="type-coercion-navigation">Type Coercion</button>
+                        <button class="dropdown-item" id="functions-navigation">Functions</button>
+                        <button class="dropdown-item" id="loop-methods-and-side-effects-navigation">Loop Methods & Side Effects</button>
+                        <button class="dropdown-item" id="date-navigation">Date</button>
+                        <button class="dropdown-item" id="fetch-navigation">Fetch</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-item dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">Import/Export for
+                        Dummies</button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2">
+                    <div class="dropdown-content">
+                        <a class="dropdown-item">Import & Export in HTML</a>
+                        <a class="dropdown-item">Import & Export in Node.js</a>
+                        <a class="dropdown-item">CommonJS vs. ESmodules</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-item dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">Express for
+                        Dummies</button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu3">
+                    <div class="dropdown-content">
+                        <a class="dropdown-item">Node.js, npm & nodemon</a>
+                        <a class="dropdown-item">Node Modules</a>
+                        <a class="dropdown-item">Express</a>
+                        <a class="dropdown-item">package.json</a>
+                        <a class="dropdown-item">Creating a Server with Express</a>
+                        <a class="dropdown-item">GET Requests in Express</a>
+                        <a class="dropdown-item">POST Requests in Express</a>
+                        <a class="dropdown-item">XSS & how to avoid it</a>
+                        <a class="dropdown-item">Serving Static Files in Express</a>
+                        <a class="dropdown-item">Redirection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="level-item dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">REST API for
+                        Dummies</button>
+                </div>
+                <div class="level-item has-dropdown is-hoverable">
+
+                    <div class="dropdown-menu" id="dropdown-menu4">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item">REST API Verbs</a>
+                            <a class="dropdown-item">REST Conventions</a>
+                            <a class="dropdown-item">REST API Tables</a>
+                            <a class="dropdown-item">Anatomy of an URL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </nav>
 
     <main>
+        <section class="section">
+            <div class="container content">

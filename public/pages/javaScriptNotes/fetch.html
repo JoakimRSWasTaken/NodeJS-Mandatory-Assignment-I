@@ -1,0 +1,50 @@
+<h1 class="title is-2 is-spaced">Fetch</h1>
+<h2 class="subtitle is-4">What is fetching?</h2>
+
+<p>
+    Fetching in JavaScript is simply put a way to fetch data from an API endpoint or similar sources.
+    Fetch requests make use of promises to handle their asynchronous nature.
+</p>
+
+<p>
+    Their asynchronous nature comes from the time it takes to perform the parallel operations
+    in your code versus the time it takes to receive the data you are fetching.
+    A promise refers to a promise of data being delivered.
+</p>
+
+<p>
+    Below is an example of how to make a proxy endpoint for redirecting to google.com:
+</p>
+
+<pre><code class="language-javascript">
+app.get('/googleproxy', (req, res) => {
+  fetch('https://www.google.com/')
+    .then((response) => response.text())
+    .then((result) => {
+      res.send(result);
+    });
+});
+</code></pre>
+
+<p>
+    In this example we have a GET request to an endpoint called
+    <code>/googleproxy</code> on a server we have running.
+</p>
+
+<p>
+    First it fetches <code>google.com</code>.
+</p>
+
+<p>
+    Then we get the response from Google. This is stored as HTML in the
+    <code>response</code> variable.
+</p>
+
+<p>
+    With the <code>response.text()</code> method we convert the HTML into a string.
+</p>
+
+<p>
+    Finally we send the HTML content back as a response to the client accessing
+    the endpoint.
+</p>

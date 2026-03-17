@@ -1,0 +1,75 @@
+<h1 class="title is-2 is-spaced">Date</h1>
+<h2 class="subtitle is-4">Date in JavaScript</h2>
+
+<p>
+    We are not going on a date but we will be exploring how to work with
+    time and date in JavaScript.
+</p>
+
+<h3 class="title is-6">Local Time</h3>
+
+<pre><code class="language-javascript">
+console.log(new Date().toString()); // Local Time
+</code></pre>
+
+<p>
+    This line logs the local time, which may not match the UTC time due
+    to time zone differences.
+</p>
+
+<h3 class="title is-6">Unix Epoch (Milliseconds since midnight 1/1 1970)</h3>
+
+<pre><code class="language-javascript">
+console.log(Date.now()) // Unix Epoch (Milliseconds since midnight 1/1 1970)
+</code></pre>
+
+<p>
+    The <code>Date.now()</code> method returns the number of milliseconds
+    since January 1, 1970, 00:00:00 UTC. This is often used to represent
+    the number of seconds since the Unix epoch.
+</p>
+
+<h3 class="title is-6">Internationalization</h3>
+
+<p>
+    JavaScript's <code>Date</code> object provides methods for
+    internationalizing dates, such as <code>toLocaleString()</code>.
+    In the <code>app.js</code> file, we're using this method to get the
+    current month and day in the Danish language (<code>da-DK</code>).
+</p>
+
+<pre><code class="language-javascript">
+app.get('/months/v1', (req, res) => {
+  const currentMonth = new Date().getMonth();
+
+  res.send({ data: months[currentMonth] });
+});
+
+app.get('/months/v2', (req, res) => {
+  const currentMonth = new Date().toLocaleString('da-DK', { month: 'long' });
+
+  res.send({ data: currentMonth });
+});
+</code></pre>
+
+<pre><code class="language-javascript">
+app.get('/days/v1', (req, res) => {
+  const weekday = new Date().getDay();
+
+  res.send({ data: days[weekday] });
+});
+
+app.get('/days/v2', (req, res) => {
+  const weekday = new Date().toLocaleString('da-DK', { weekday: 'long' });
+
+  res.send({ data: weekday });
+});
+</code></pre>
+
+<p>
+    In these examples, we're using the <code>toLocaleString()</code>
+    method to get the current month and day in Danish, respectively.
+    The options <code>{ month: 'long' }</code> and
+    <code>{ weekday: 'long' }</code> specify that we want the full
+    month name and the full weekday name.
+</p>

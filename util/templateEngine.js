@@ -8,7 +8,8 @@ export function constructPage(page, options = {}) {
            .replace('$DOCUMENT_TITLE$', options.documentTitle || 'Node.js for Dummies')
            .replace('$CSS_LINKS$', options.cssLink || '' )
            + page
-           + footer;
+           + footer
+           .replace('$SCRIPT_LINKS$', options.scriptLink || '');
 }
 
 export function readPage(path) {
