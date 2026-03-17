@@ -4,7 +4,35 @@ const app = express();
 
 app.use(express.static('public'));
 
-// =================== Pages =====================
+// ========= Serving static files for Vercel ===========
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+addStaticRoutes(path.resolve(__dirname, 'public'));
+
+function addStaticRoutes(dir, baseUrl = "") {
+    const files = fs.readdirSync(dir, { withFileTypes: true });
+
+    files.forEach((file) => {
+        const fullPath = path.join(dir, file.name);
+        const routePath = path.join(baseUrl, file.name).replace(/\\/g, "/");
+
+
+        if (file.isDirectory()) {
+            addStaticRoutes(fullPath, routePath);
+        } else {
+            app.get(`/${routePath}`, (req, res) => {
+                res.sendFile(fullPath);
+            });
+        }
+    });
+}
+
+// ====================== Pages ========================
 import frontpageRouter from "./routers/frontpageRouter.js";
 
 app.use(frontpageRouter);
